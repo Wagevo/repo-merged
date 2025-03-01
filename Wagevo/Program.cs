@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Wagevo.Data; // Import your EF Core DbContext
+using Wagevo.Data;
+using Wagevo.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +10,8 @@ var app = builder.Build();
 
 builder.Services.AddDbContext<WagevoDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
