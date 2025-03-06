@@ -12,10 +12,10 @@ public class UserService : IUserService
         _context = context;
     }
 
-    public async Task<User> AddUser(User user)
+    public User AddUser(User user)
     {
         _context.Users.Add(user);
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
         return user;
     }
 

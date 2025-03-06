@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Wagevo.Models;
+using UserService = Wagevo.Services.UserService;
 
 namespace Wagevo.Controllers;
 
@@ -26,6 +27,28 @@ public class HomeController : Controller
     public IActionResult Login()
     {
         return View();
+    }
+
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    public IActionResult Registration(RegistrationForm form)
+    {
+        User user = new User()
+        {
+            FirstName = form.FirstName,
+            LastName = form.LastName,
+            Email = form.Email,
+            Password = form.Password,
+            Birthday = form.Birthday,
+            CompanyId = 1,
+            HourlyWage = 1,
+            PhoneNumber = form.Phone,
+            IsAdmin = true
+        };
+        UserService.AddUser(user);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
