@@ -10,11 +10,13 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IUserService _userService;
+    private readonly ICompanyService _companyService;
 
-    public HomeController(ILogger<HomeController> logger, IUserService userService)
+    public HomeController(ILogger<HomeController> logger, IUserService userService, ICompanyService companyService)
     {
         _logger = logger;
         _userService = userService;
+        _companyService = companyService;
     }
 
     public IActionResult Index()
@@ -39,6 +41,12 @@ public class HomeController : Controller
 
     public IActionResult Registration(RegistrationForm form)
     {
+        Company company = new Company()
+        {
+            Address = form.BusinessAddress,
+            Name = form.BusinessName,
+        };
+        _companyService.AddCompany(company);
         User user = new User()
         {
             FirstName = form.FirstName,
@@ -46,7 +54,7 @@ public class HomeController : Controller
             Email = form.Email,
             Password = form.Password,
             Birthday = form.Birthday,
-            CompanyId = 1,
+            CompanyId = company.CompanyId,
             HourlyWage = 1,
             PhoneNumber = form.Phone,
             IsAdmin = true

@@ -11,6 +11,7 @@ namespace Wagevo.Data
         }
 
         public DbSet<User> Users { get; set; }  // Represents the Users table
+        public DbSet<Company> Companies { get; set; } // Represents the Companies table
     }
 }
 
