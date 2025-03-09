@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class UserService : IUserService
 {
-    private readonly WagevoDBContext _context;
+    private WagevoDBContext _context;
 
     public UserService(WagevoDBContext context)
     {
