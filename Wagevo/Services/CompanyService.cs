@@ -17,4 +17,11 @@ public class CompanyService: ICompanyService
         _context.SaveChanges();
         return company;
     }
+
+    public List<User> GetEmployees(int companyId)
+    {
+        return _context.Users
+            .Where(user => user.CompanyId == companyId)
+            .ToList();
+    }
 }

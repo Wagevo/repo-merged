@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Company View";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Wagevo</h1>
+    <p>Comapny: @ViewBag.Company.Name</p>
+    @foreach(User employee in ViewBag.Employees)
+    {
+        <p>@employee.FirstName</p>
+    }
+</div>

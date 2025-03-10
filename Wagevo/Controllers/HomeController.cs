@@ -60,7 +60,7 @@ public class HomeController : Controller
             IsAdmin = true
         };
         _userService.AddUser(user);
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "Company", company);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
