@@ -24,4 +24,9 @@ public class CompanyService: ICompanyService
             .Where(user => user.CompanyId == companyId)
             .ToList();
     }
+
+    public Company GetCompany(int companyId)
+    {
+        return _context.Companies.Find(companyId);
+    }
 }

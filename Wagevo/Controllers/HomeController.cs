@@ -29,9 +29,14 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Login()
+    public IActionResult Login(RegistrationForm form)
     {
-        return View();
+        string email = form.Email;
+        string password = form.Password;
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password)) return View();
+        User user = _userService.GetUserByEmailAndPassword(email, password);
+        return user == null ?  View() : 
+            RedirectToAction("Index", "Company", new { companyId=user.CompanyId });
     }
 
     public IActionResult Register()

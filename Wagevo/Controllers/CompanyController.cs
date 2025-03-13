@@ -14,8 +14,9 @@ public class CompanyController: Controller
         _companyService = companyService;
     }
     
-    public IActionResult Index(Company company)
+    public IActionResult Index(int companyId)
     {
+        Company company = _companyService.GetCompany(companyId);
         ViewBag.Company = company;
         List<User> employees = _companyService.GetEmployees(company.CompanyId);
         ViewBag.Employees = employees;

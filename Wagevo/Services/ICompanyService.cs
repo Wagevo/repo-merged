@@ -7,4 +7,6 @@ public interface ICompanyService
     Company AddCompany(Company company);
     
     List<User> GetEmployees(int companyId);
+    
+    Company GetCompany(int companyId);
 }

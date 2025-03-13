@@ -23,4 +23,12 @@ public class UserService : IUserService
     {
         return await _context.Users.ToListAsync();
     }
+
+    public User GetUserByEmailAndPassword(string email, string password)
+    {
+        User user = _context.Users
+            .Where(user => user.Email == email && user.Password == password)
+            .FirstOrDefault();
+        return user;
+    }
 }
