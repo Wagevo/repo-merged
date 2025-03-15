@@ -7,4 +7,6 @@ public interface IUserService
     User AddUser(User user);
     Task<List<User>> GetAllUsers();
     User GetUserByEmailAndPassword(string email, string password);
+    User GetUserById(int userId);
+    User UpdateUser(User user);
 }

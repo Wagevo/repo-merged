@@ -60,7 +60,7 @@ public class HomeController : Controller
             Password = form.Password,
             Birthday = form.Birthday,
             CompanyId = company.CompanyId,
-            HourlyWage = 1,
+            HourlyWage = 0,
             PhoneNumber = form.Phone,
             IsAdmin = true
         };

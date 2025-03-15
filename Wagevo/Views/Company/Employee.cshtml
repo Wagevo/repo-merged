@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Employee View";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Wagevo</h1>
+    <p>@ViewBag.Employee.FirstName @ViewBag.Employee.LastName</p>
+    <table class="table table-striped table-bordered mt-4">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Hourly Wage</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form method="post" asp-action="UpdateHourlyWage" asp-controller="Company">
+            <tr>
+                <td>@ViewBag.Employee.FirstName @ViewBag.Employee.LastName</td>
+                <td>@ViewBag.Employee.Email</td>
+                <td>
+                    <input type="hidden" name="userId" value="@ViewBag.Employee.UserId" />
+                    <input type="number" name="hourlyWage" value="@ViewBag.Employee.HourlyWage" class="form-control" />
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+    <h2>Shifts</h2>
+</div>

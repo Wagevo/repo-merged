@@ -31,4 +31,17 @@ public class UserService : IUserService
             .FirstOrDefault();
         return user;
     }
+
+    public User GetUserById(int userId)
+    {
+        User user = _context.Users.Where(user => user.UserId == userId).FirstOrDefault();
+        return user;
+    }
+
+    public User UpdateUser(User user)
+    {
+        _context.Users.Update(user);
+        _context.SaveChanges();
+        return user;
+    }
 }
