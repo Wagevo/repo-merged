@@ -3,15 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wagevo.Data
 {
-    public class WagevoDBContext: DbContext
+    public class WagevoDBContext : DbContext
     {
-        public WagevoDBContext(DbContextOptions<WagevoDBContext> options) 
+        public WagevoDBContext(DbContextOptions<WagevoDBContext> options)
             : base(options)
         {
         }
 
-        public DbSet<User> Users { get; set; }  // Represents the Users table
+        public DbSet<User> Users { get; set; } // Represents the Users table
         public DbSet<Company> Companies { get; set; } // Represents the Companies table
-    }
+        public DbSet<Shift> Shifts { get; set; } // Represents the Shifts table
+}
 }
 
