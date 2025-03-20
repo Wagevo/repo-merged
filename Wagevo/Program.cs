@@ -12,6 +12,7 @@ builder.Services.AddDbContext<WagevoDBContext>(options =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddHttpClient<IFinchAPIService, FinchAPIService>();
 
 var app = builder.Build();
 

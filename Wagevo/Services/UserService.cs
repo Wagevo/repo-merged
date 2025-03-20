@@ -44,4 +44,17 @@ public class UserService : IUserService
         _context.SaveChanges();
         return user;
     }
+
+    public List<Shift> GetShiftsByUserId(int userId)
+    {
+        List<Shift> shifts = _context.Shifts.Where(shift => shift.UserId == userId).ToList();
+        return shifts;
+    }
+
+    public Shift UpdateShift(Shift shift)
+    {
+        _context.Shifts.Update(shift);
+        _context.SaveChanges();
+        return shift;
+    }
 }

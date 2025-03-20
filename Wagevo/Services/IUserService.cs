@@ -9,4 +9,6 @@ public interface IUserService
     User GetUserByEmailAndPassword(string email, string password);
     User GetUserById(int userId);
     User UpdateUser(User user);
+    List<Shift> GetShiftsByUserId(int userId);
+    Shift UpdateShift(Shift shift);
 }

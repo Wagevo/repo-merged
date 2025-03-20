@@ -40,6 +40,24 @@ public class CompanyController: Controller
         var user = _userService.GetUserById(id);
         ViewBag.Employee = user;
         ViewBag.Company = _companyService.GetCompany(user.CompanyId);
+        ViewBag.Shifts = _userService.GetShiftsByUserId(user.UserId);
         return View(user);
+    }
+    
+    public IActionResult CorrectShift(int shiftId, DateTime TimeIn, DateTime TimeOut, int userId)
+    {
+        User user = _userService.GetUserById(userId);
+        TimeSpan difference = TimeIn - TimeOut;
+        Shift shift = new Shift()
+        {
+            ShiftId = shiftId,
+            TimeIn = TimeIn,
+            TimeOut = TimeOut,
+            UserId = userId,
+            HoursWorked = difference.TotalHours,
+            Earnings = difference.TotalHours * user.HourlyWage
+        };
+        _userService.UpdateShift(shift);
+        return RedirectToAction("Employee", new { id = userId });
     }
 }
